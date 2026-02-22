@@ -10,12 +10,12 @@ A complete end-to-end MLOps pipeline for binary image classification (Cats vs Do
 
 ## 🔗 Quick Links
 
-| Resource | Link |
-|----------|------|
-| **GitHub Repository** | [https://github.com/sanepr/mlops-assign-dogs-vs-cats](https://github.com/sanepr/mlops-assign-dogs-vs-cats) |
-| **GitHub Actions CI/CD** | [View Pipeline Run](https://github.com/sanepr/mlops-assign-dogs-vs-cats/actions/runs/22278780768) |
+| Resource | Link                                                                                                                |
+|----------|---------------------------------------------------------------------------------------------------------------------|
+| **GitHub Repository** | [https://github.com/sanepr/mlops-assign-dogs-vs-cats](https://github.com/sanepr/mlops-assign-dogs-vs-cats)          |
+| **GitHub Actions CI/CD** | [View Pipeline Run](https://github.com/sanepr/mlops-assign-dogs-vs-cats/actions/runs/22278780768)                   |
 | **Codebase Zip Download** | [Download from Google Drive](https://drive.google.com/file/d/1zEFgiH4AAbcGn1N6cYYkPQrbBty-7-UH/view?usp=drive_link) |
-| **Demo Video** | *Link to be added* |
+| **Demo Video** | [Link] (https://drive.google.com/file/d/1V64EkvmUqLqKXqwQkRTN1NefZwEX90My/view?usp=drive_link)                      |
 
 ## 📋 Table of Contents
 
