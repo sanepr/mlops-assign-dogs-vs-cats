@@ -8,6 +8,15 @@ A complete end-to-end MLOps pipeline for binary image classification (Cats vs Do
 ![Docker](https://img.shields.io/badge/Docker-Ready-blue)
 ![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-purple)
 
+## 🔗 Quick Links
+
+| Resource | Link |
+|----------|------|
+| **GitHub Repository** | [https://github.com/sanepr/mlops-assign-dogs-vs-cats](https://github.com/sanepr/mlops-assign-dogs-vs-cats) |
+| **GitHub Actions CI/CD** | [View Pipeline Run](https://github.com/sanepr/mlops-assign-dogs-vs-cats/actions/runs/22278780768) |
+| **Codebase Zip Download** | [Download from Google Drive](https://drive.google.com/file/d/1zEFgiH4AAbcGn1N6cYYkPQrbBty-7-UH/view?usp=drive_link) |
+| **Demo Video** | *Link to be added* |
+
 ## 📋 Table of Contents
 
 - [Project Overview](#project-overview)
@@ -429,6 +438,30 @@ GitHub Actions workflow showing the CI/CD pipeline execution with all stages.
 
 ---
 
+## 📦 Submission Details
+
+### Deliverables
+
+1. **Zip File** containing:
+   - All source code
+   - Configuration files (DVC, CI/CD, Docker, deployment manifests)
+   - Trained model artefacts
+
+2. **Screen Recording** (< 5 minutes) demonstrating:
+   - Complete MLOps workflow from code change to deployed model prediction
+
+### Download Links
+
+| Item | Link |
+|------|------|
+| **Source Code (Zip)** | [Download from Google Drive](https://drive.google.com/file/d/1zEFgiH4AAbcGn1N6cYYkPQrbBty-7-UH/view?usp=drive_link) |
+| **Demo Video** | *Link to be added* |
+| **GitHub Actions Pipeline** | [View Run](https://github.com/sanepr/mlops-assign-dogs-vs-cats/actions/runs/22278780768) |
+
+> **Note**: The zip folder and video file may exceed the submission size limit. Please use the Google Drive links provided above.
+
+---
+
 ## 📝 License
 
 This project is for educational purposes as part of MLOps Assignment 2.
@@ -438,3 +471,9 @@ This project is for educational purposes as part of MLOps Assignment 2.
 ## 👥 Team
 
 **Group 47**
+Group 47
+1. BITS EMAIL ID: 2024aa05891@wilp.bits-pilani.ac.in, NAME: kumar ashish
+2. BITS EMAIL ID: 2024aa05499@wilp.bits-pilani.ac.in, NAME: Shubham Priyadarshi
+3. BITS EMAIL ID: 2024aa05441@wilp.bits-pilani.ac.in, NAME: Prabhat kumar
+4. BITS EMAIL ID: 2024aa05517@wilp.bits-pilani.ac.in, NAME: Ashish Ranjan
+5. BITS EMAIL ID: 2024aa05642@wilp.bits-pilani.ac.in, NAME: Ujjawal Kumar
