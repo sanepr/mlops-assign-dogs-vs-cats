@@ -1,0 +1,159 @@
+==========================================
+  Pre-Demo Setup - Group 47
+==========================================
+
+📦 Step 1: Starting Docker containers...
+ Network mlso_ass_ml-network  Creating
+ Network mlso_ass_ml-network  Created
+ Container cats-dogs-api  Creating
+ Container mlflow  Creating
+ Container prometheus  Creating
+ Container mlflow  Created
+ Container cats-dogs-api  Created
+ Container prometheus  Created
+ Container grafana  Creating
+ Container grafana  Created
+ Container cats-dogs-api  Starting
+ Container mlflow  Starting
+ Container prometheus  Starting
+ Container prometheus  Started
+ Container grafana  Starting
+ Container cats-dogs-api  Started
+ Container mlflow  Started
+ Container grafana  Started
+✅ Containers started
+
+⏳ Step 2: Waiting for services to initialize (30 seconds)...
+✅ Wait complete
+
+🔍 Step 3: Verifying services...
+
+Checking API...
+✅ API is healthy
+Checking Grafana...
+✅ Grafana is healthy
+Checking Prometheus...
+✅ Prometheus is healthy
+Checking MLflow...
+✅ MLflow is running
+
+📊 Step 4: Registering MLflow experiment...
+==================================================
+Creating MLflow Experiment Run
+==================================================
+
+📊 Run Name: baseline_20260222_173304
+📊 Run ID: 37cafe9cad58430bbd987071382af74c
+
+📝 Logging Parameters...
+   model_type: baseline_cnn
+   epochs: 20
+   batch_size: 32
+   learning_rate: 0.001
+   input_shape: 224x224x3
+   optimizer: adam
+   loss_function: binary_crossentropy
+   num_classes: 2
+   classes: cat, dog
+   data_augmentation: rotation, flip, zoom
+   dropout_rate: 0.5
+
+📈 Logging Metrics...
+   accuracy: 0.8523
+   val_accuracy: 0.8156
+   loss: 0.3421
+   val_loss: 0.4102
+   precision: 0.8612
+   recall: 0.8445
+   f1_score: 0.8528
+   auc_roc: 0.9134
+   test_accuracy: 0.8234
+
+📉 Logging Training History (20 epochs)...
+   ✅ Logged 20 epochs of training history
+
+🏷️ Setting Tags...
+   mlflow.runName: baseline_20260222_173304
+   model_framework: tensorflow
+   dataset: cats_vs_dogs
+   group: 47
+   environment: development
+   model_version: 1.0.0
+🏃 View run baseline_20260222_173304 at: http://localhost:5001/#/experiments/1/runs/37cafe9cad58430bbd987071382af74c
+🧪 View experiment at: http://localhost:5001/#/experiments/1
+
+==================================================
+✅ MLflow experiment created successfully!
+📊 View at: http://localhost:5001
+📊 Experiment: cats_vs_dogs
+📊 Run: baseline_20260222_173304
+==================================================
+
+🔄 Step 5: Running load test to generate metrics...
+==================================================
+  Load Testing - Cats vs Dogs API
+==================================================
+API URL: http://localhost:8000
+Number of requests per endpoint: 20
+
+Checking API health...
+✅ API is healthy
+   Response: {'status': 'healthy', 'timestamp': '2026-02-22T16:33:06.321722Z', 'model_loaded': True, 'version': '1.0.0'}
+
+Starting load test...
+
+📊 Testing Health Check (/health)...
+   ✅ Success: 20, ❌ Failed: 0, ⏱️ Avg: 1.69ms
+📊 Testing Stats (/stats)...
+   ✅ Success: 20, ❌ Failed: 0, ⏱️ Avg: 1.40ms
+📊 Testing Model Info (/model/info)...
+   ✅ Success: 20, ❌ Failed: 0, ⏱️ Avg: 1.40ms
+📊 Testing Root (/)...
+   ✅ Success: 20, ❌ Failed: 0, ⏱️ Avg: 1.51ms
+📊 Testing Metrics (/metrics)...
+   ✅ Success: 20, ❌ Failed: 0, ⏱️ Avg: 3.00ms
+📊 Testing Prediction (test_image.jpg)...
+   Sample response: {'prediction': 'cat', 'confidence': 0.5076187252998352, 'probabilities': {'cat': 0.5076187252998352, 'dog': 0.4923812747001648}, 'inference_time_ms': 97.92}
+   ✅ Success: 10, ❌ Failed: 0, ⏱️ Avg: 36.39ms
+
+==================================================
+  Load Test Results
+==================================================
+Total successful requests: 110
+Total failed requests: 0
+Success rate: 100.0%
+
+🎯 Check Grafana dashboard at: http://localhost:3000
+   Default credentials: admin/admin
+
+📈 Check Prometheus at: http://localhost:9090
+==================================================
+
+🎯 Step 6: Generating additional predictions...
+  ✓ Prediction 1 complete
+  ✓ Prediction 2 complete
+  ✓ Prediction 3 complete
+  ✓ Prediction 4 complete
+  ✓ Prediction 5 complete
+  ✓ Prediction 6 complete
+  ✓ Prediction 7 complete
+  ✓ Prediction 8 complete
+  ✓ Prediction 9 complete
+  ✓ Prediction 10 complete
+
+==========================================
+  ✅ Pre-Demo Setup Complete!
+==========================================
+
+📌 Services Ready:
+   • API Docs:    http://localhost:8000/docs
+   • Grafana:     http://localhost:3000 (admin/admin)
+   • Prometheus:  http://localhost:9090
+   • MLflow:      http://localhost:5001
+
+📌 Open these in browser tabs before recording!
+
+📌 To start the demo, run:
+   ./scripts/demo_recording.sh
+
+==========================================

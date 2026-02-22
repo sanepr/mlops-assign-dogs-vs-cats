@@ -22,6 +22,7 @@ A complete end-to-end MLOps pipeline for binary image classification (Cats vs Do
 - [API Documentation](#api-documentation)
 - [Testing](#testing)
 - [Deployment](#deployment)
+- [Screenshots](#screenshots)
 
 ## 🎯 Project Overview
 
@@ -395,6 +396,39 @@ minikube service cats-dogs-classifier --url
 
 ---
 
+## 📸 Screenshots
+
+### Grafana - ML Dashboard
+The ML Dashboard shows model performance metrics including accuracy, confidence, predictions by class, and request rates.
+
+![Grafana ML Dashboard 1](screenshots/screencapture-localhost-3000-d-cats-dogs-dashboard-cats-vs-dogs-classifier-ml-dashboard-2026-02-22-17_05_05.png)
+
+![Grafana ML Dashboard 2](screenshots/screencapture-localhost-3000-d-cats-dogs-dashboard-cats-vs-dogs-classifier-ml-dashboard-2026-02-22-17_05_23.png)
+
+### Grafana - Prometheus Overview Dashboard
+The Prometheus Overview Dashboard displays system metrics, scrape targets, and storage statistics.
+
+![Prometheus Dashboard](screenshots/screencapture-localhost-3000-d-prometheus-dashboard-prometheus-overview-2026-02-22-17_05_38.png)
+
+### MLflow - Experiment Tracking
+MLflow UI showing experiment runs, parameters, metrics, and model artifacts.
+
+![MLflow UI 1](screenshots/screencapture-localhost-5001-MLFLOWS_2_2026-02-22-17_06_38.png)
+
+![MLflow UI 2](screenshots/screencapture-localhost-MLFLOWS_5001-2026-02-22-17_08_10.png)
+
+### API - Swagger Documentation
+FastAPI Swagger UI showing all available endpoints for the classification service.
+
+![API Swagger Docs](screenshots/screencapture-localhost-8000-API_Swagger_Docs-2026-02-22-17_07_57.png)
+
+### GitHub Actions - CI/CD Pipeline
+GitHub Actions workflow showing the CI/CD pipeline execution with all stages.
+
+![GitHub Actions Pipeline](screenshots/screencapture-github-sanepr-mlops-assign-dogs-vs-cats-actions-runs-22278780768-2026-02-22-17_07_39.png)
+
+---
+
 ## 📝 License
 
 This project is for educational purposes as part of MLOps Assignment 2.
@@ -403,4 +437,4 @@ This project is for educational purposes as part of MLOps Assignment 2.
 
 ## 👥 Team
 
-**Group 70**
+**Group 47**
