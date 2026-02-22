@@ -1,0 +1,36 @@
+========================================
+  Load Testing - Cats vs Dogs API
+========================================
+API URL: http://localhost:8000
+Number of requests: 100
+Parallel workers: 5
+
+Checking API health...
+✅ API is healthy
+
+Starting load test...
+
+📊 Running health checks...
+   Health checks: 20 success, 0 failed
+📊 Running stats requests...
+   Stats requests completed
+📊 Running model info requests...
+   Model info requests completed
+📊 Running root endpoint requests...
+   Root endpoint requests completed
+📊 Running metrics requests...
+   Metrics requests completed
+📊 Running prediction requests...
+   Prediction requests completed
+
+========================================
+  Load Test Results
+========================================
+Total successful requests: 110
+Total failed requests: 0
+
+🎯 Check Grafana dashboard at: http://localhost:3000
+   Default credentials: admin/admin
+
+📈 Check Prometheus at: http://localhost:9090
+========================================

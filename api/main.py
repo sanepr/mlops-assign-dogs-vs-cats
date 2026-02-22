@@ -16,12 +16,72 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 import structlog
 from prometheus_fastapi_instrumentator import Instrumentator
+from prometheus_client import Counter, Histogram, Gauge, Summary
 
 from api.schemas import (
     HealthResponse, PredictionResponse, PredictionRequest,
     ErrorResponse, ModelInfoResponse, BatchPredictionRequest,
     BatchPredictionResponse
 )
+from api.predict import ModelInference, get_inference_instance
+
+# Custom Prometheus metrics for ML model monitoring
+PREDICTION_COUNTER = Counter(
+    'model_predictions_total',
+    'Total number of predictions made',
+    ['predicted_class', 'confidence_bucket']
+)
+
+PREDICTION_CONFIDENCE = Histogram(
+    'model_prediction_confidence',
+    'Histogram of prediction confidence scores',
+    buckets=[0.5, 0.6, 0.7, 0.8, 0.9, 0.95, 0.99, 1.0]
+)
+
+INFERENCE_TIME = Summary(
+    'model_inference_seconds',
+    'Time spent on model inference'
+)
+
+MODEL_ACCURACY = Gauge(
+    'model_accuracy',
+    'Current model accuracy (simulated based on confidence)'
+)
+
+PREDICTIONS_BY_CLASS = Counter(
+    'model_predictions_by_class_total',
+    'Total predictions grouped by class',
+    ['class_name']
+)
+
+CAT_PREDICTIONS = Counter(
+    'model_cat_predictions_total',
+    'Total cat predictions'
+)
+
+DOG_PREDICTIONS = Counter(
+    'model_dog_predictions_total',
+    'Total dog predictions'
+)
+
+HIGH_CONFIDENCE_PREDICTIONS = Counter(
+    'model_high_confidence_predictions_total',
+    'Predictions with confidence > 0.8'
+)
+
+LOW_CONFIDENCE_PREDICTIONS = Counter(
+    'model_low_confidence_predictions_total',
+    'Predictions with confidence <= 0.6'
+)
+
+AVERAGE_CONFIDENCE = Gauge(
+    'model_average_confidence',
+    'Rolling average of prediction confidence'
+)
+
+# Track running statistics
+confidence_sum = 0.0
+prediction_count = 0
 from api.predict import ModelInference, get_inference_instance
 
 
@@ -287,6 +347,35 @@ async def predict(
         predicted_class, confidence, probabilities, inference_time = model_inference.predict(image_bytes)
 
         total_inference_time += inference_time
+
+        # Track ML metrics for Prometheus
+        global confidence_sum, prediction_count
+        prediction_count += 1
+        confidence_sum += confidence
+
+        # Update Prometheus metrics
+        confidence_bucket = 'high' if confidence > 0.8 else ('medium' if confidence > 0.6 else 'low')
+        PREDICTION_COUNTER.labels(predicted_class=predicted_class, confidence_bucket=confidence_bucket).inc()
+        PREDICTION_CONFIDENCE.observe(confidence)
+        INFERENCE_TIME.observe(inference_time / 1000)  # Convert ms to seconds
+        PREDICTIONS_BY_CLASS.labels(class_name=predicted_class).inc()
+
+        if predicted_class == 'cat':
+            CAT_PREDICTIONS.inc()
+        else:
+            DOG_PREDICTIONS.inc()
+
+        if confidence > 0.8:
+            HIGH_CONFIDENCE_PREDICTIONS.inc()
+        elif confidence <= 0.6:
+            LOW_CONFIDENCE_PREDICTIONS.inc()
+
+        # Update rolling average confidence
+        avg_confidence = confidence_sum / prediction_count
+        AVERAGE_CONFIDENCE.set(avg_confidence)
+
+        # Simulate accuracy based on confidence (in real scenario, this would use actual labels)
+        MODEL_ACCURACY.set(avg_confidence)
 
         logger.info(
             "Prediction made",
