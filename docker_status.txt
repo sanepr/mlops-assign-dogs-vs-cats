@@ -1,0 +1,5 @@
+NAME            IMAGE                           COMMAND                  SERVICE      CREATED         STATUS                   PORTS
+cats-dogs-api   cats-dogs-classifier:latest     "uvicorn api.main:ap…"   api          2 minutes ago   Up 2 minutes (healthy)   0.0.0.0:8000->8000/tcp
+grafana         grafana/grafana:10.0.0          "/run.sh"                grafana      2 minutes ago   Up 2 minutes             0.0.0.0:3000->3000/tcp
+mlflow          ghcr.io/mlflow/mlflow:v2.10.0   "mlflow server --hos…"   mlflow       2 minutes ago   Up 2 minutes             0.0.0.0:5001->5000/tcp
+prometheus      prom/prometheus:v2.45.0         "/bin/prometheus --c…"   prometheus   2 minutes ago   Up 2 minutes             0.0.0.0:9090->9090/tcp

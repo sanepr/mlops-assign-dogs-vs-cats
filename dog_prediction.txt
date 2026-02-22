@@ -1,0 +1,1 @@
+{"prediction":"cat","confidence":0.5237205028533936,"probabilities":{"cat":0.5237205028533936,"dog":0.47627949714660645},"inference_time_ms":141.75}

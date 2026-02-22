@@ -1,0 +1,78 @@
+# Docker ignore file
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Tests
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+htmlcov/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# DVC cache (not needed in container)
+.dvc/cache/
+.dvc/tmp/
+
+# Data (mount at runtime)
+data/
+mlruns/
+
+# Documentation
+*.md
+!README.md
+*.pdf
+docs/
+
+# Notebooks
+*.ipynb
+.ipynb_checkpoints/
+
+# Logs
+logs/
+*.log

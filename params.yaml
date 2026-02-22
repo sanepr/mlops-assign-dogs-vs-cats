@@ -1,0 +1,25 @@
+# DVC Parameters File
+# This file contains all configurable parameters for the ML pipeline
+
+prepare:
+  train_ratio: 0.8
+  val_ratio: 0.1
+  test_ratio: 0.1
+  image_size: [224, 224]
+  seed: 42
+
+train:
+  epochs: 20
+  batch_size: 32
+  learning_rate: 0.001
+  model_type: baseline
+  early_stopping_patience: 5
+  reduce_lr_patience: 3
+
+augmentation:
+  rotation_range: 40
+  width_shift_range: 0.2
+  height_shift_range: 0.2
+  shear_range: 0.2
+  zoom_range: 0.2
+  horizontal_flip: true

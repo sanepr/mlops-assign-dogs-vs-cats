@@ -1,0 +1,49 @@
+============================================================
+MLflow Experiments Verification
+============================================================
+
+✓ MLflow database found: /Users/aashishr/codebase/mlso_ass/mlruns/mlflow.db
+  Size: 196608 bytes
+
+--- Experiments ---
+  ID: 0, Name: Default, Stage: active
+  ID: 1, Name: cats_vs_dogs, Stage: active
+
+--- Runs ---
+  Run: 06b09dfe..., Name: baseline_20260217_165711, Status: RUNNING
+  Run: c7542e4a..., Name: baseline_20260217_160210, Status: FAILED
+  Run: f011f29a..., Name: baseline_20260217_151842, Status: FAILED
+  Run: 890441e7..., Name: simple_20260217_150845, Status: FAILED
+
+--- Latest Metrics ---
+  baseline_20260217_160210: train_loss = 0.30315476655960083
+  baseline_20260217_160210: train_accuracy = 0.8702256679534912
+  baseline_20260217_160210: val_loss = 0.3699739873409271
+  baseline_20260217_160210: val_accuracy = 0.8248139023780823
+  baseline_20260217_160210: final_train_accuracy = 0.8702256679534912
+  baseline_20260217_160210: final_val_accuracy = 0.8248139023780823
+  baseline_20260217_160210: final_train_loss = 0.30315476655960083
+  baseline_20260217_160210: final_val_loss = 0.3699739873409271
+  baseline_20260217_151842: train_loss = 0.1645631492137909
+  baseline_20260217_151842: train_accuracy = 0.9375
+  baseline_20260217_151842: val_loss = 0.8120928406715393
+  baseline_20260217_151842: val_accuracy = 0.5
+  baseline_20260217_151842: final_train_accuracy = 0.9375
+  baseline_20260217_151842: final_val_accuracy = 0.5
+  baseline_20260217_151842: final_train_loss = 0.1645631492137909
+  baseline_20260217_151842: final_val_loss = 0.8120928406715393
+  simple_20260217_150845: train_loss = 0.07770662009716034
+  simple_20260217_150845: train_accuracy = 0.96875
+  simple_20260217_150845: val_loss = 0.03756557032465935
+  simple_20260217_150845: val_accuracy = 0.96875
+
+--- MLruns Directory Structure ---
+  models/ (0 items)
+  1/ (3 items)
+  mlflow.db
+
+============================================================
+To view experiments in MLflow UI:
+  1. Ensure Docker is running: docker-compose up -d
+  2. Open: http://localhost:5001
+============================================================

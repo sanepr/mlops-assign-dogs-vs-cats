@@ -1,0 +1,49 @@
+# DVC Pipeline Definition
+# This file defines the data processing and training pipeline stages
+
+stages:
+  # Stage 1: Download and prepare data
+  prepare_data:
+    cmd: python scripts/prepare_data.py --source data/raw --output data/processed
+    deps:
+      - scripts/prepare_data.py
+      - data/raw
+    outs:
+      - data/processed
+    params:
+      - prepare.train_ratio
+      - prepare.val_ratio
+      - prepare.test_ratio
+
+  # Stage 2: Train model
+  train:
+    cmd: python src/train.py --data-dir data/processed/train --output-dir models --epochs ${train.epochs} --batch-size ${train.batch_size} --model-type ${train.model_type}
+    deps:
+      - src/train.py
+      - src/model.py
+      - src/utils.py
+      - data/processed/train
+    outs:
+      - models/baseline_model.h5
+    params:
+      - train.epochs
+      - train.batch_size
+      - train.learning_rate
+      - train.model_type
+    metrics:
+      - models/metrics.json:
+          cache: false
+
+  # Stage 3: Evaluate model
+  evaluate:
+    cmd: python scripts/evaluate.py --model models/baseline_model.h5 --data data/processed/test
+    deps:
+      - scripts/evaluate.py
+      - models/baseline_model.h5
+      - data/processed/test
+    metrics:
+      - models/evaluation_metrics.json:
+          cache: false
+    plots:
+      - models/confusion_matrix.png
+      - models/roc_curve.png

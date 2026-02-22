@@ -1,0 +1,56 @@
+# Kubernetes Service for Cats vs Dogs Classifier
+apiVersion: v1
+kind: Service
+metadata:
+  name: cats-dogs-classifier
+  labels:
+    app: cats-dogs-classifier
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 8000
+      protocol: TCP
+      name: http
+  selector:
+    app: cats-dogs-classifier
+---
+# Internal service for monitoring
+apiVersion: v1
+kind: Service
+metadata:
+  name: cats-dogs-classifier-metrics
+  labels:
+    app: cats-dogs-classifier
+    monitoring: "true"
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8000
+      targetPort: 8000
+      protocol: TCP
+      name: metrics
+  selector:
+    app: cats-dogs-classifier
+---
+# Ingress for external access (optional)
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cats-dogs-classifier-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: cats-dogs-api.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: cats-dogs-classifier
+                port:
+                  number: 80

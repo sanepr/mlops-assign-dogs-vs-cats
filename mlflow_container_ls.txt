@@ -1,0 +1,6 @@
+total 252
+drwxr-xr-x 5 root root    160 Feb 17 16:11 .
+drwxr-xr-x 1 root root   4096 Feb 17 16:14 ..
+drwxr-xr-x 5 root root    160 Feb 17 13:40 1
+-rw-r--r-- 1 root root 196608 Feb 17 15:57 mlflow.db
+drwxr-xr-x 8 root root    256 Feb 17 13:42 models

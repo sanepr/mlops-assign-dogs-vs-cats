@@ -1,0 +1,11 @@
+/usr/local/bin/python3.10: can't open file '/root/.local/bin/uvicorn': [Errno 13] Permission denied
+/usr/local/bin/python3.10: can't open file '/root/.local/bin/uvicorn': [Errno 13] Permission denied
+/usr/local/bin/python3.10: can't open file '/root/.local/bin/uvicorn': [Errno 13] Permission denied
+/usr/local/bin/python3.10: can't open file '/root/.local/bin/uvicorn': [Errno 13] Permission denied
+/usr/local/bin/python3.10: can't open file '/root/.local/bin/uvicorn': [Errno 13] Permission denied
+/usr/local/bin/python3.10: can't open file '/root/.local/bin/uvicorn': [Errno 13] Permission denied
+/usr/local/bin/python3.10: can't open file '/root/.local/bin/uvicorn': [Errno 13] Permission denied
+/usr/local/bin/python3.10: can't open file '/root/.local/bin/uvicorn': [Errno 13] Permission denied
+/usr/local/bin/python3.10: can't open file '/root/.local/bin/uvicorn': [Errno 13] Permission denied
+/usr/local/bin/python3.10: can't open file '/root/.local/bin/uvicorn': [Errno 13] Permission denied
+/usr/local/bin/python3.10: can't open file '/root/.local/bin/uvicorn': [Errno 13] Permission denied

@@ -1,0 +1,109 @@
+# Kubernetes Deployment for Cats vs Dogs Classifier
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cats-dogs-classifier
+  labels:
+    app: cats-dogs-classifier
+    version: v1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cats-dogs-classifier
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: cats-dogs-classifier
+        version: v1
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8000"
+        prometheus.io/path: "/metrics"
+    spec:
+      containers:
+        - name: api
+          image: REGISTRY:IMAGE_TAG
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+              protocol: TCP
+          env:
+            - name: MODEL_PATH
+              valueFrom:
+                configMapKeyRef:
+                  name: cats-dogs-config
+                  key: model_path
+            - name: APP_VERSION
+              valueFrom:
+                configMapKeyRef:
+                  name: cats-dogs-config
+                  key: app_version
+            - name: DEBUG
+              value: "false"
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "2Gi"
+              cpu: "1000m"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 3
+          volumeMounts:
+            - name: model-storage
+              mountPath: /app/models
+              readOnly: true
+      volumes:
+        - name: model-storage
+          persistentVolumeClaim:
+            claimName: model-pvc
+      # For local testing without PVC
+      # volumes:
+      #   - name: model-storage
+      #     emptyDir: {}
+---
+# Horizontal Pod Autoscaler
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: cats-dogs-classifier-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: cats-dogs-classifier
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 80

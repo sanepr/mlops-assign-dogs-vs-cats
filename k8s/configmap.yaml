@@ -1,0 +1,39 @@
+# ConfigMap for Cats vs Dogs Classifier
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cats-dogs-config
+  labels:
+    app: cats-dogs-classifier
+data:
+  model_path: "/app/models/baseline_model.h5"
+  app_version: "1.0.0"
+  log_level: "INFO"
+---
+# PersistentVolumeClaim for model storage
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: model-pvc
+  labels:
+    app: cats-dogs-classifier
+spec:
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: standard
+---
+# Secret for sensitive configuration (template)
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cats-dogs-secrets
+  labels:
+    app: cats-dogs-classifier
+type: Opaque
+data:
+  # Base64 encoded values
+  # echo -n "value" | base64
+  api_key: ""  # Add your API key if needed

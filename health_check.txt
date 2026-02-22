@@ -1,0 +1,1 @@
+{"status":"healthy","timestamp":"2026-02-17T13:41:59.654488Z","model_loaded":false,"version":"1.0.0"}

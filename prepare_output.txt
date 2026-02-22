@@ -1,0 +1,6 @@
+Found classes: ['dogs', 'cats']
+  dogs: train=10079, val=1259, test=1261
+  cats: train=10079, val=1259, test=1261
+
+Dataset split complete. Total 25198 files processed.
+Output saved to data/processed
